@@ -66,8 +66,8 @@ function HeroArtwork() {
 
 function ResidencyAssets() {
   return (
-    <div className="residency-assets" aria-hidden="true">
-      <div className="residency-asset residency-calendar">
+    <div className="residency-assets">
+      <div className="residency-asset residency-calendar" aria-hidden="true">
         <div className="calendar-top">
           <span>Residency</span>
           <span>05</span>
@@ -80,7 +80,7 @@ function ResidencyAssets() {
         <strong>Weeks in motion</strong>
       </div>
 
-      <div className="residency-asset residency-room">
+      <div className="residency-asset residency-room" aria-hidden="true">
         <span className="room-window" />
         <span className="room-bed">
           <i />
@@ -89,7 +89,7 @@ function ResidencyAssets() {
         <small>Live + build together</small>
       </div>
 
-      <div className="residency-asset residency-location">
+      <div className="residency-asset residency-location" aria-hidden="true">
         <span className="location-pin" />
         <span>
           Kochi
@@ -97,11 +97,15 @@ function ResidencyAssets() {
         </span>
       </div>
 
-      <div className="residency-asset residency-demo">
-        <span>Every Friday</span>
-        <strong>Demo night</strong>
+      <a
+        className="residency-asset residency-demo"
+        href="/nights-and-weekends"
+        aria-label="Explore the Nights and Weekends program"
+      >
+        <span>Explore the program</span>
+        <strong>Nights &amp; Weekends</strong>
         <i>↗</i>
-      </div>
+      </a>
     </div>
   );
 }
