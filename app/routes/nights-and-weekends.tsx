@@ -2,95 +2,35 @@ import type { Route } from "./+types/nights-and-weekends";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Nights & Weekends — Builder in Residence" },
+    { title: "Nights & Weekends — TinkerSpace" },
     {
       name: "description",
       content:
-        "A four-week live experimentation studio for founders learning to find evidence, test demand, and make better product decisions.",
+        "You already build. We make it count. A five-week cohort at TinkerSpace, Kochi: take what you've built into the real world every week and come back with evidence.",
     },
   ];
 }
 
 const weeks = [
-  {
-    number: "01",
-    question: "Is this problem actually real?",
-    topics: [
-      "Assumption thinking",
-      "Problem discovery",
-      "Customer conversations",
-      "Observation",
-      "Evidence gathering",
-      "Signal vs noise",
-    ],
-    output: "Problem Evidence Board",
-  },
-  {
-    number: "02",
-    question: "What is the cheapest way to find out if this could work?",
-    topics: [
-      "Hypothesis design",
-      "Riskiest assumptions",
-      "Experiment design",
-      "Experiment ladder",
-      "MVP vs experiment",
-      "Willingness to act or pay",
-    ],
-    output: "Experiment Card + First Experiment",
-  },
-  {
-    number: "03",
-    question: "What should change because of what we learned?",
-    topics: [
-      "Evidence analysis",
-      "Behaviour vs opinions",
-      "Failure analysis",
-      "Product and offer iteration",
-      "Pricing and positioning",
-      "Continue / change / kill",
-    ],
-    output: "Version 0 → Version 1 → Version 2",
-  },
-  {
-    number: "04",
-    question: "Can I repeatedly find customers and keep learning?",
-    topics: [
-      "Distribution experiments",
-      "Customer acquisition",
-      "Conversion",
-      "Feedback loops",
-      "Experiment prioritisation",
-      "Weekly learning rhythm",
-    ],
-    output: "Personal Experiment System",
-  },
-];
-
-const modules = [
-  ["01", "Builder → Experimenter", "Move from building on instinct to learning through evidence."],
-  ["02", "Problem Discovery", "Understand real problems, behaviour and the questions worth asking."],
-  ["03", "Customer Conversations", "Extract insight, identify patterns and separate signal from noise."],
-  ["04", "Hypothesis Design", "Turn beliefs into tests with explicit evidence thresholds."],
-  ["05", "Experiment Design", "Choose the smallest credible test before reaching for an MVP."],
-  ["06", "Demand Validation", "Test action, commitment, pilots, pre-orders and payment."],
-  ["07", "Evidence & Learning", "Read results clearly and learn without defending the idea."],
-  ["08", "Iteration & Decisions", "Continue, modify, pivot or kill based on what the test showed."],
-  ["09", "Product Iteration", "Change product, offer, audience, pricing or model with intent."],
-  ["10", "Distribution Experiments", "Find customers and test channels before scaling marketing."],
-  ["11", "Customer Conversion", "Turn interest into conversations, demos, pilots and payments."],
-  ["12", "Founder Operating System", "Build a repeatable hypothesis-to-decision practice."],
+  ["01", "Find the belief.", "What are you assuming to be true?"],
+  ["02", "Put it in front of people.", "Stop asking what people might do. Watch what they actually do."],
+  ["03", "Ask for something real.", "Attention. Commitment. Usage. Money."],
+  ["04", "Follow the evidence.", "Change the thing, change the audience, or kill the assumption."],
+  ["05", "Run the loop yourself.", "Leave knowing how to test the next thing without us."],
 ] as const;
 
-const resources = [
-  ["Conversation", "Problem interview guide", "Questions, prompts and a note-taking structure for useful customer conversations."],
-  ["Experiment", "Experiment card", "A one-page canvas for the hypothesis, test, threshold, cost and decision."],
-  ["Demand", "Pricing resource pack", "Ways to test willingness to pay without sitting through a two-hour pricing class."],
-  ["Evidence", "Problem evidence board", "A shared surface for assumptions, observations, patterns and open questions."],
-  ["Decision", "Continue / change / kill log", "A clear record of what the evidence changed and what happens next."],
-  ["Rhythm", "Weekly operating template", "A practical cadence for choosing and running the next highest-value test."],
+const faqs = [
+  ["Who is this for?", "Builders who are already working on something after hours — developers, designers, indie hackers — alongside a job, college, freelance work or another commitment."],
+  ["Do I need a working product?", "You need something real enough to put in front of people: a product, a working prototype, or a concrete offer. An idea alone isn't enough."],
+  ["Do I need to quit my job?", "No. You keep your job. You keep your life. You give us your nights and your weekends."],
+  ["How much time does it take?", "Three to four touchpoints a week at TinkerSpace — a live session, an in-studio working block and a short evidence check-in — plus the fieldwork you do between them."],
+  ["What happens during the five weeks?", "Each week you take one assumption, put it in front of real people, ask for something real, and come back with evidence. By week five you're running the loop on your own."],
+  ["Is this online or in person?", "In person, at TinkerSpace, Kochi."],
+  ["How much does it cost?", "Pricing is announced with each cohort. Apply and we'll send you the details."],
+  ["When does the next cohort start?", "Applications for the next cohort are opening soon. Apply now and we'll be in touch with dates."],
 ] as const;
 
-function ArrowUpRight() {
+function Arrow() {
   return (
     <svg aria-hidden="true" viewBox="0 0 20 20" fill="none">
       <path d="M5 15 15 5M7 5h8v8" stroke="currentColor" strokeWidth="1.8" />
@@ -100,11 +40,10 @@ function ArrowUpRight() {
 
 function BrandMark() {
   return (
-    <a className="nw-brand" href="/" aria-label="Builder in Residence home">
-      <img src="/bir-logo-trimmed.png" alt="" />
+    <a className="nw-brand" href="#nw-title" aria-label="Nights and Weekends">
       <span>
-        Builder in Residence
-        <small>Programs / 02</small>
+        Nights &amp; Weekends
+        <small>with TinkerSpace</small>
       </span>
     </a>
   );
@@ -112,14 +51,14 @@ function BrandMark() {
 
 function ExperimentLoop() {
   return (
-    <div className="nw-loop" aria-label="The four-week experiment loop">
+    <div className="nw-loop" aria-label="The weekly experiment loop">
       <div className="nw-loop__orbit">
         <span className="nw-loop__node nw-loop__node--one">Hypothesis</span>
         <span className="nw-loop__node nw-loop__node--two">Experiment</span>
         <span className="nw-loop__node nw-loop__node--three">Evidence</span>
         <span className="nw-loop__node nw-loop__node--four">Decision</span>
         <div className="nw-loop__core">
-          <span>04 weeks</span>
+          <span>05 weeks</span>
           <strong>Learn</strong>
           <small>Repeat weekly</small>
         </div>
@@ -134,238 +73,141 @@ export default function NightsAndWeekends() {
       <header className="nw-header">
         <BrandMark />
         <nav className="nw-nav" aria-label="Nights and Weekends navigation">
-          <a href="#method">Method</a>
-          <a href="#curriculum">Curriculum</a>
-          <a href="#resources">Resources</a>
+          <a href="/">Builder in Residence</a>
         </nav>
         <a className="nw-header-cta" href="#apply">
-          Join the next cohort
-          <ArrowUpRight />
+          Join the Cohort
+          <Arrow />
         </a>
       </header>
 
       <section className="nw-hero" aria-labelledby="nw-title">
         <div className="nw-hero__copy">
-          <p className="nw-kicker">Build after hours. Test in the real world.</p>
+          <p className="nw-kicker"><span aria-hidden="true" />TinkerSpace presents</p>
           <h1 id="nw-title">
             <span>Nights</span>
             <em>&amp; Weekends</em>
           </h1>
-          <p className="nw-hero__lede">
-            Stop polishing assumptions. Learn how to turn a belief into a test,
-            find evidence with real people, and decide what to build next.
-          </p>
-
+          <p className="nw-hero__tag">You already build. We make it count.</p>
+          <p className="nw-hero__lede"><strong>Five weeks. Real people. Real money. Real evidence.</strong></p>
           <div className="nw-hero__actions">
-            <a className="nw-button nw-button--light" href="#program">
-              Explore the program
-              <ArrowUpRight />
+            <a className="nw-button nw-button--light" href="#apply">
+              Apply now
+              <Arrow />
             </a>
-            <p>
-              For founders building<br />before or after work.
-            </p>
           </div>
         </div>
 
         <div className="nw-hero__visual">
           <ExperimentLoop />
         </div>
-
-        <div className="nw-hero__meta" aria-label="Program highlights">
-          <div><span>Duration</span><strong>04 weeks</strong></div>
-          <div><span>Format</span><strong>Live + in the field</strong></div>
-          <div><span>Outcome</span><strong>A repeatable experiment system</strong></div>
-        </div>
       </section>
 
-      <section className="nw-intro" id="method">
-        <div className="nw-section-label">
-          <span>01</span>
-          <p>The operating principle</p>
-        </div>
-        <div className="nw-intro__statement">
-          <p className="nw-overline">This is not a four-week lecture series.</p>
-          <h2>You do not learn experimentation by watching someone experiment.</h2>
-          <p>
-            The program separates what needs to be understood, what needs to be
-            practised, and what simply needs to be available when you need it.
-          </p>
-        </div>
-
-        <div className="nw-principle-output">
-          <span>Output / 01</span>
-          <strong>A belief turned into a testable question.</strong>
-          <p>Assumption → Experiment → Evidence → Decision</p>
-        </div>
-
+      <section className="nw-story" id="why">
+        <h2>Nights &amp; Weekends exists to support and connect ambitious builders.</h2>
+        <p>
+          Traditionally, ambitious builders get trapped in the building. You spend
+          weeks refining the product, changing the landing page, adding another
+          feature, talking about validation — while the real question remains
+          unanswered: does anyone actually want this?
+        </p>
+        <h3>Nights &amp; Weekends is a five-week cohort designed to get you out of your head and into the field.</h3>
+        <h2>Every week, you take something you've built into the real world, learn from what happens, and come back with evidence.</h2>
       </section>
 
-      <section className="nw-example" aria-labelledby="example-title">
-        <div className="nw-example__prompt">
-          <blockquote id="example-title">
-            <span className="nw-quote-cue">When you say</span>
-            <span className="nw-quote-line">“I need to test whether</span>
-            <span className="nw-quote-line">people will pay.”</span>
-          </blockquote>
-          <p className="nw-example__description">
-            You open the resource pack, choose an appropriate test, then come
-            into the studio and test pricing with real people.
-          </p>
-        </div>
-        <div className="nw-example__answer">
-          <article className="nw-resource-highlight">
-            <span>Use this resource</span>
-            <strong>Pricing &amp; commitment</strong>
-            <small>Pick a test. Set a threshold. Go to the market.</small>
-          </article>
-          <div className="nw-example__evidence">
-            <span>Evidence to collect</span>
-            <strong>A deposit, pre-order, pilot, or payment.</strong>
-          </div>
-        </div>
+      <section className="nw-isolated" aria-label="The deal">
+        <p className="nw-isolated__keep">
+          <span>You keep your job.</span>
+          <span>You keep your life.</span>
+        </p>
+        <p className="nw-isolated__give">
+          You give us your <em>nights and weekends.</em>
+        </p>
       </section>
 
-      <section className="nw-program" id="program">
-        <div className="nw-section-label">
-          <span>02</span>
-          <p>The four-week program</p>
-        </div>
-        <div className="nw-program__heading">
-          <h2>From assumption to<br />a repeatable practice.</h2>
-          <p>
-            Every week moves from a live mental model to an experiment in the
-            field, then back to the studio with evidence.
-          </p>
-        </div>
-
-        <div className="nw-weeks">
-          {weeks.map((week) => (
-            <article className="nw-week" key={week.number}>
-              <div className="nw-week__top">
-                <span>Week {week.number}</span>
-                <i aria-hidden="true">↘</i>
-              </div>
-              <h3>{week.question}</h3>
-              <ul>
-                {week.topics.map((topic) => <li key={topic}>{topic}</li>)}
-              </ul>
-              <div className="nw-week__output">
-                <span>Working output</span>
-                <strong>{week.output}</strong>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="nw-curriculum" id="curriculum">
-        <div className="nw-section-label">
-          <span>03</span>
-          <p>Curriculum</p>
-        </div>
-        <div className="nw-curriculum__heading">
-          <h2>The skills behind<br />better experiments.</h2>
-          <p>
-            The modules give you the judgement to choose the right test not a
-            checklist that assumes every idea needs the same playbook.
-          </p>
-        </div>
-
-        <div className="nw-module-list">
-          {modules.map(([number, title, description]) => (
-            <article className="nw-module" key={number}>
-              <span>{number}</span>
+      <section className="nw-manifesto" id="weeks">
+        <h2>Stop validating.<br />Start testing.</h2>
+        <ol>
+          {weeks.map(([n, title, body]) => (
+            <li key={n}>
+              <span>Week {n}</span>
               <h3>{title}</h3>
-              <p>{description}</p>
-              <i aria-hidden="true">↗</i>
-            </article>
+              <p>{body}</p>
+            </li>
           ))}
+        </ol>
+        <div className="nw-manifesto__gate">
+          <p>If you want lectures, this isn't it.</p>
+          <p>If you want five weeks of actually putting your assumptions in front of real people, <strong>keep going.</strong></p>
+        </div>
+        <div className="nw-manifesto__habit">
+          <h3>The program ends. The habit doesn't.</h3>
+          <p>You leave with a system for running this loop on your own, indefinitely.</p>
         </div>
       </section>
 
-      <section className="nw-library" id="resources">
-        <div className="nw-section-label nw-section-label--light">
-          <span>04</span>
-          <p>Resource library</p>
-        </div>
-        <div className="nw-library__heading">
-          <div>
-            <p className="nw-overline">Use it when the experiment needs it.</p>
-            <h2>The tactic stays on the shelf until it becomes useful.</h2>
-          </div>
-          <p>
-            Short, practical packs help you execute without turning studio time
-            into a library of how to classes.
-          </p>
-        </div>
-
-        <div className="nw-resource-grid">
-          {resources.map(([category, name, description], index) => (
-            <article className="nw-resource" key={name}>
-              <div>
-                <span>{String(index + 1).padStart(2, "0")} / {category}</span>
-                <i>Included</i>
-              </div>
-              <h3>{name}</h3>
-              <p>{description}</p>
-              <strong aria-hidden="true">↗</strong>
-            </article>
-          ))}
-        </div>
+      <section className="nw-who" id="who">
+        <p className="nw-overline">Who this is for</p>
+        <h2>You're already building.</h2>
+        <ul>
+          <li>You're working on something after hours.</li>
+          <li>You have a job, college, freelance work or another commitment.</li>
+          <li>You don't need another course telling you how to build.</li>
+          <li>You need to know whether the thing you're building deserves more of your time.</li>
+        </ul>
+        <p className="nw-who__punch">That's what these five weeks are for.</p>
       </section>
 
-      <section className="nw-onboarding">
-        <div className="nw-section-label">
-          <span>05</span>
-          <p>Onboarding</p>
-        </div>
-        <div className="nw-onboarding__grid">
-          <div className="nw-onboarding__heading">
-            <p className="nw-overline">A starting point, not an evaluation.</p>
-            <h2>Know where belief ends and evidence begins.</h2>
-            <p className="nw-onboarding__intro">
-              The baseline helps each builder see where they currently stand
-              and choose the assumption that most needs to be tested first.
-            </p>
-          </div>
-          <ol>
-            <li>
-              <span>01</span>
-              <div><strong>Describe the current reality</strong><p>What you have built, who it is for, what has worked, what has failed and what remains uncertain.</p></div>
-            </li>
-            <li>
-              <span>02</span>
-              <div><strong>Score confidence against evidence</strong><p>Rate every major assumption by how strongly you believe it and how much real-world evidence supports it.</p></div>
-            </li>
-            <li>
-              <span>03</span>
-              <div><strong>Create the assumption map</strong><p>Separate what you believe, know, do not know and need to prove—then identify your #1 riskiest assumption.</p></div>
-            </li>
-          </ol>
+      <section className="nw-world" aria-labelledby="world-title">
+        <p>stop refining it in your head.</p>
+        <h2 id="world-title">Put it in the world.</h2>
+        <blockquote>
+          Five weeks. Live in the field.<br />Come back with evidence.
+        </blockquote>
+      </section>
+
+      <section className="nw-faq" id="faq">
+        <h2>questions?</h2>
+        <div>
+          {faqs.map(([q, a]) => (
+            <details key={q}>
+              <summary>{q}<Arrow /></summary>
+              <p>{a}</p>
+            </details>
+          ))}
         </div>
       </section>
 
       <section className="nw-final" id="apply">
         <div className="nw-final__eyebrow">
-          <span><strong>06 /</strong> Next cohort</span>
-          <span>Applications opening soon</span>
+          <span><strong>N&amp;W</strong> nights &amp; weekends</span>
+          <span>TinkerSpace, Kochi</span>
         </div>
         <div className="nw-final__content">
-          <h2>
-            Build after hours.
-          </h2>
+          <h2>Stop waiting for someday.</h2>
           <div className="nw-final__footer">
             <p>
-              <span>Four weeks to replace “I think” with</span>
-              <strong>“here is what we learned.”</strong>
+              <span>Five weeks.</span>
+              <strong>Real people. Real money. Real evidence.</strong>
             </p>
             <a className="nw-button nw-button--dark" href="#nw-title">
-              Register your interest
-              <ArrowUpRight />
+              Apply now
+              <Arrow />
             </a>
           </div>
         </div>
       </section>
+
+      <footer className="nw-footer">
+        <BrandMark />
+        <p className="nw-footer__line">Build after hours.</p>
+        <nav className="nw-footer__links" aria-label="Footer">
+          <a href="/">Builder in Residence</a>
+          <a href="#apply">Join the Cohort</a>
+          <a href="https://instagram.com/tinkerspace" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="https://twitter.com/tinkerspace" target="_blank" rel="noreferrer">Twitter</a>
+        </nav>
+      </footer>
     </main>
   );
 }
