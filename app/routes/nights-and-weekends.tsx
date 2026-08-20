@@ -67,6 +67,8 @@ function ExperimentLoop() {
   );
 }
 
+const APPLY_URL = "https://airtable.com/appoFMc8Ox08jKyRt/shr0R5FAJCnCb4MHR";
+
 export default function NightsAndWeekends() {
   return (
     <main className="nw-page">
@@ -75,7 +77,7 @@ export default function NightsAndWeekends() {
         <nav className="nw-nav" aria-label="Nights and Weekends navigation">
           <a href="/">Builder in Residence</a>
         </nav>
-        <a className="nw-header-cta" href="#apply">
+        <a className="nw-header-cta" href={APPLY_URL} target="_blank" rel="noreferrer">
           Join the Cohort
           <Arrow />
         </a>
@@ -91,7 +93,7 @@ export default function NightsAndWeekends() {
           <p className="nw-hero__tag">You already build. We make it count.</p>
           <p className="nw-hero__lede"><strong>Five weeks. Real people. Real money. Real evidence.</strong></p>
           <div className="nw-hero__actions">
-            <a className="nw-button nw-button--light" href="#apply">
+            <a className="nw-button nw-button--light" href={APPLY_URL} target="_blank" rel="noreferrer">
               Apply now
               <Arrow />
             </a>
@@ -190,7 +192,7 @@ export default function NightsAndWeekends() {
               <span>Five weeks.</span>
               <strong>Real people. Real money. Real evidence.</strong>
             </p>
-            <a className="nw-button nw-button--dark" href="#nw-title">
+            <a className="nw-button nw-button--dark" href={APPLY_URL} target="_blank" rel="noreferrer">
               Apply now
               <Arrow />
             </a>
@@ -203,7 +205,7 @@ export default function NightsAndWeekends() {
         <p className="nw-footer__line">Build after hours.</p>
         <nav className="nw-footer__links" aria-label="Footer">
           <a href="/">Builder in Residence</a>
-          <a href="#apply">Join the Cohort</a>
+          <a href={APPLY_URL} target="_blank" rel="noreferrer">Join the Cohort</a>
           <a href="https://instagram.com/tinkerspace" target="_blank" rel="noreferrer">Instagram</a>
           <a href="https://twitter.com/tinkerspace" target="_blank" rel="noreferrer">Twitter</a>
         </nav>
