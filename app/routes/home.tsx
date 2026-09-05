@@ -1,4 +1,5 @@
 import type { Route } from "./+types/home";
+import { SiteNav } from "../components/site-nav";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -6,7 +7,7 @@ export function meta({}: Route.MetaArgs) {
     {
       name: "description",
       content:
-        "A five-week residency in Kochi for independent builders ready to turn ambitious ideas into work that ships.",
+        "A nine-week hardware residency at TinkerSpace Kochi for builders turning ambitious electronics ideas into demonstrable projects.",
     },
   ];
 }
@@ -21,14 +22,6 @@ function ArrowUpRight() {
     >
       <path d="M5 15 15 5M7 5h8v8" stroke="currentColor" strokeWidth="1.8" />
     </svg>
-  );
-}
-
-function ResidencyMark() {
-  return (
-    <a className="brand" href="/" aria-label="Builder in Residence home">
-      <img src="/bir-logo-trimmed.png" alt="" className="brand-logo" />
-    </a>
   );
 }
 
@@ -50,7 +43,7 @@ function HeroArtwork() {
       </div>
       <div className="art-pass">
         <span>Builder residency</span>
-        <strong>05 weeks</strong>
+        <strong>09 weeks</strong>
         <small>Kochi · 2026</small>
       </div>
       <div className="art-spark art-spark--one">✦</div>
@@ -70,7 +63,7 @@ function ResidencyAssets() {
       <div className="residency-asset residency-calendar" aria-hidden="true">
         <div className="calendar-top">
           <span>Residency</span>
-          <span>05</span>
+          <span>09</span>
         </div>
         <div className="calendar-grid">
           {Array.from({ length: 20 }, (_, index) => (
@@ -113,23 +106,11 @@ function ResidencyAssets() {
 export default function Home() {
   return (
     <main className="hero-shell">
-      <header className="site-header">
-        <ResidencyMark />
-
-        <div className="header-note" aria-label="Applications status">
-          <span className="status-dot" />
-          Applications open
-        </div>
-
-        <a className="header-cta" href="#apply">
-          Apply now
-          <ArrowUpRight />
-        </a>
-      </header>
+      <SiteNav current="home" />
 
       <section className="hero" aria-labelledby="hero-title">
         <div className="hero-eyebrow">
-          <p>Five weeks of deliberate building</p>
+          <p>Nine weeks of deliberate hardware building</p>
         </div>
 
         <HeroArtwork />
@@ -144,47 +125,19 @@ export default function Home() {
 
         <div className="hero-footer" id="apply">
           <p className="hero-copy">
-            Five focused weeks in Kochi for independent builders ready to turn
-            ambitious ideas into work that ships.
+            Nine focused weeks at TinkerSpace Kochi for builders ready to turn
+            an electronics idea into work they can demonstrate.
           </p>
 
-          <button className="primary-cta" type="button">
-            <span>Apply for the residency</span>
+          <a className="primary-cta" href="/hardware">
+            <span>Explore hardware</span>
             <span className="cta-arrow">
               <ArrowUpRight />
             </span>
-          </button>
+          </a>
         </div>
       </section>
 
-      <div className="edge-ticker" aria-hidden="true">
-        <div className="edge-ticker-track">
-          <span className="ticker-sequence">
-            <b>Build what matters</b><i>✦</i>
-            <b>Find your people</b><i>✦</i>
-            <b>Ship the work</b><i>✦</i>
-            <b>Build what matters</b><i>✦</i>
-            <b>Find your people</b><i>✦</i>
-            <b>Ship the work</b><i>✦</i>
-            <b>Build what matters</b><i>✦</i>
-            <b>Find your people</b><i>✦</i>
-            <b>Ship the work</b><i>✦</i>
-            <b>Build what matters</b><i>✦</i>
-          </span>
-          <span className="ticker-sequence">
-            <b>Build what matters</b><i>✦</i>
-            <b>Find your people</b><i>✦</i>
-            <b>Ship the work</b><i>✦</i>
-            <b>Build what matters</b><i>✦</i>
-            <b>Find your people</b><i>✦</i>
-            <b>Ship the work</b><i>✦</i>
-            <b>Build what matters</b><i>✦</i>
-            <b>Find your people</b><i>✦</i>
-            <b>Ship the work</b><i>✦</i>
-            <b>Build what matters</b><i>✦</i>
-          </span>
-        </div>
-      </div>
     </main>
   );
 }
