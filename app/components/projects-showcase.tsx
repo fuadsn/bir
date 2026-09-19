@@ -1,4 +1,4 @@
-import { PROJECTS_ORGANIZATION, type Project } from "../lib/projects";
+import { PROJECTS_ORGANIZATION, formatCommitDate, projectSlug, projectTitle, type Project } from "../lib/projects";
 import Markdown, { defaultUrlTransform } from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -21,7 +21,7 @@ export function ProjectsShowcase({ projects, error, titleId = "projects-list-tit
   return (
     <section className="projects-showcase" aria-labelledby={titleId}>
       <div className="projects-showcase__heading">
-        <p>Explore the work</p>
+        <p>Section 06 — Project index</p>
         <h2 id={titleId}>Every hardware build.<br />The README included.</h2>
       </div>
       {error ? <p className="projects-error">{error} <a href={`https://github.com/orgs/${PROJECTS_ORGANIZATION}/repositories`}>View the projects on GitHub.</a></p> : null}
@@ -31,14 +31,14 @@ export function ProjectsShowcase({ projects, error, titleId = "projects-list-tit
             <summary>
               <span className="project__number">{String(index + 1).padStart(2, "0")}</span>
               <div className="project__intro">
-                <h3>{project.name.replaceAll("-", " ")}</h3>
+                <h3>{projectTitle(project.name)}</h3>
                 <p>{project.description ?? project.preview ?? "Open the project to explore its documentation."}</p>
               </div>
-              <div className="project__meta"><span>Hardware project</span><span>{project.archived ? "Archived" : "Active"}</span></div>
+              <div className="project__meta"><span>{formatCommitDate(project.pushed_at) ?? "Hardware project"}</span><span className={`project__status ${project.archived ? "is-archived" : "is-active"}`}>{project.archived ? "Archived" : "Active"}</span></div>
               <span className="project__toggle" aria-hidden="true">+</span>
             </summary>
             <div className="project__details">
-              <div className="project__details-head"><p>Project documentation</p><a href={project.html_url} target="_blank" rel="noreferrer">Open repository <Arrow /></a></div>
+              <div className="project__details-head"><p>Project documentation</p><span className="project__links"><a href={`/hardware/${projectSlug(project.name)}`}>Weekly log <Arrow /></a><a href={project.html_url} target="_blank" rel="noreferrer">Open repository <Arrow /></a></span></div>
               {project.readmeMarkdown ? <div className="project-readme"><Markdown remarkPlugins={[remarkGfm]} urlTransform={(url, key) => projectUrl(project, url, key)}>{project.readmeMarkdown}</Markdown></div> : <p className="project-readme project-readme--empty">This repository does not have a README yet.</p>}
             </div>
           </details>
