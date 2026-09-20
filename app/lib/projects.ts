@@ -48,3 +48,9 @@ export function formatCommitDate(pushedAt: string | null) {
   // Fixed locale and zone so the server and the client agree.
   return at.toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric", timeZone: "UTC" });
 }
+
+// ponytail: the QR pixels come from goqr.me, so printing needs network. Swap in
+// a `qrcode` dependency and render the SVG in the loader if that ever bites.
+export function qrSrc(url: string, size = 600) {
+  return `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&margin=0&format=svg&data=${encodeURIComponent(url)}`;
+}

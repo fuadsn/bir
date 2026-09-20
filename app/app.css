@@ -5653,3 +5653,47 @@ body:has(.hardware-page) { background: var(--hw-paper); }
   .hw-people--dense { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .hardware-page .hw-people--dense p { font-size: var(--hw-label); }
 }
+
+/* Unlisted /qr — a sheet of project QR codes, built to be printed and cut up. */
+.qr-sheet { padding: var(--hw-space-8) 0 var(--hw-space-10); }
+.qr-sheet__head { margin-bottom: var(--hw-space-7); }
+
+.qr-sheet__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: var(--hw-space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.qr-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--hw-space-2);
+  padding: var(--hw-space-5);
+  border: 1px solid var(--hw-rule);
+  background: #fff;
+  break-inside: avoid;
+}
+
+.qr-card__code { width: 100%; height: auto; aspect-ratio: 1; }
+.qr-card__no { margin-top: var(--hw-space-3); }
+.hardware-page .qr-card__name { margin: 0; font-size: var(--hw-subheading); font-weight: 700; letter-spacing: -.02em; text-transform: capitalize; }
+.hardware-page .qr-card__url { margin: 0; font-family: var(--hw-font-mono); font-size: var(--hw-label); color: var(--hw-slate); overflow-wrap: anywhere; }
+
+/* /hardware/:project/qr — one project, one page, sized to be scanned across a room. */
+.qr-single { display: grid; place-items: center; min-height: 100vh; padding: var(--hw-space-6); }
+.qr-card--single { width: min(32rem, 100%); text-align: center; gap: var(--hw-space-3); }
+.hardware-page .qr-card__blurb { margin: 0; font-size: var(--hw-ui); color: var(--hw-slate); }
+
+.qr-card__single { margin-top: auto; padding-top: var(--hw-space-3); color: var(--hw-cobalt); }
+
+@media print {
+  .qr-sheet { padding: 0; }
+  .qr-card__single { display: none; }
+  .qr-sheet__head { display: none; }
+  .qr-sheet__grid { grid-template-columns: repeat(3, 1fr); }
+  .qr-card { border-color: #000; }
+  .qr-single { min-height: 0; padding: 0; }
+}
