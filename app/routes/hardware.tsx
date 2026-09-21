@@ -69,6 +69,11 @@ const inPublic: Array<[string, string]> = [
   ["Make a deep-dive video", "Pick one component, take it apart, and explain it to everyone who comes next."],
 ];
 
+const sponsors = [
+  { name: "Circuit Digest", href: "https://circuitdigest.com", logo: "/sponsors/circuit-digest.webp", width: 832, height: 240 },
+  { name: "MakerGram", href: "https://makergram.com", logo: "/sponsors/makergram.webp", width: 560, height: 501 },
+];
+
 function People({ people, dense = false }: { people: Person[]; dense?: boolean }) {
   return (
     <ul className={`hw-people${dense ? " hw-people--dense" : ""}`}>
@@ -192,6 +197,24 @@ export default function Hardware({ loaderData }: Route.ComponentProps) {
     </section>
 
     <ProjectsShowcase projects={loaderData.projects} error={loaderData.projectsError} titleId="hardware-projects-title" />
+
+    <section className="hw-section hw-sponsors" aria-labelledby="sponsors-title">
+      <div className="hw-container">
+        <header className="hw-section-head">
+          <p className="hw-label">Section 07 — Sponsors</p>
+          <h2 className="hw-h2" id="sponsors-title">The residency is sponsored by</h2>
+        </header>
+        <ul className="hw-sponsors__grid">
+          {sponsors.map(({ name, href, logo, width, height }) => (
+            <li key={name}>
+              <a href={href} target="_blank" rel="noreferrer">
+                <img src={logo} alt={name} width={width} height={height} loading="lazy" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
 
     <footer className="hw-close">
       <div className="hw-container">

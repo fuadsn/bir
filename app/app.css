@@ -5654,6 +5654,34 @@ body:has(.hardware-page) { background: var(--hw-paper); }
   .hardware-page .hw-people--dense p { font-size: var(--hw-label); }
 }
 
+/* Sponsors — logos keep their own colours, on white so they read as supplied. */
+.hw-sponsors__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--hw-grid-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hw-sponsors__grid a {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  padding: var(--hw-space-7);
+  border: 1px solid var(--hw-rule);
+  border-radius: var(--hw-radius-card);
+  background: #fff;
+  transition: border-color var(--hw-duration-fast) var(--hw-ease);
+}
+
+.hw-sponsors__grid a:hover { border-color: var(--hw-cobalt); }
+.hw-sponsors__grid img { width: auto; max-width: 100%; height: 6rem; object-fit: contain; }
+
+@media (max-width: 767px) {
+  .hw-sponsors__grid { grid-template-columns: 1fr; }
+}
+
 /* Unlisted /qr — a sheet of project QR codes, built to be printed and cut up. */
 .qr-sheet { padding: var(--hw-space-8) 0 var(--hw-space-10); }
 .qr-sheet__head { margin-bottom: var(--hw-space-7); }
