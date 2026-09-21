@@ -10,7 +10,6 @@ export function SiteNav({ current }: { current: SiteRoute }) {
   return (
     <header className="shared-site-nav">
       <a className="shared-site-nav__brand" href="/" aria-label="Builder in Residence home">
-        <img src="/bir-logo-trimmed.png" alt="" />
         <span>Builder in Residence</span>
       </a>
 

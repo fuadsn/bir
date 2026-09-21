@@ -69,10 +69,24 @@ const inPublic: Array<[string, string]> = [
   ["Make a deep-dive video", "Pick one component, take it apart, and explain it to everyone who comes next."],
 ];
 
-const sponsors = [
-  { name: "Circuit Digest", href: "https://circuitdigest.com", logo: "/sponsors/circuit-digest.webp", width: 832, height: 240 },
+type Org = { name: string; href: string; logo: string; width: number; height: number; showName?: boolean };
+
+const partner: Org = { name: "Circuit Digest", href: "https://circuitdigest.com", logo: "/sponsors/circuit-digest.webp", width: 832, height: 240 };
+
+const organisers: Org[] = [
   { name: "MakerGram", href: "https://makergram.com", logo: "/sponsors/makergram.webp", width: 560, height: 501 },
+  // The mark has no wordmark, so the name is printed beside it.
+  { name: "TinkerSpace", href: "https://tinkerhub.org", logo: "/sponsors/tinkerspace.png", width: 109, height: 111, showName: true },
 ];
+
+function OrgCard({ org, lead = false }: { org: Org; lead?: boolean }) {
+  return (
+    <a className={`hw-sponsors__card${lead ? " hw-sponsors__card--lead" : ""}`} href={org.href} target="_blank" rel="noreferrer">
+      <img src={org.logo} alt={org.showName ? "" : org.name} width={org.width} height={org.height} loading="lazy" />
+      {org.showName && <span>{org.name}</span>}
+    </a>
+  );
+}
 
 function People({ people, dense = false }: { people: Person[]; dense?: boolean }) {
   return (
@@ -201,18 +215,21 @@ export default function Hardware({ loaderData }: Route.ComponentProps) {
     <section className="hw-section hw-sponsors" aria-labelledby="sponsors-title">
       <div className="hw-container">
         <header className="hw-section-head">
-          <p className="hw-label">Section 07 — Sponsors</p>
-          <h2 className="hw-h2" id="sponsors-title">The residency is sponsored by</h2>
+          <p className="hw-label">Section 07 — Partners</p>
+          <h2 className="hw-h2" id="sponsors-title">Partners and organisers.</h2>
         </header>
-        <ul className="hw-sponsors__grid">
-          {sponsors.map(({ name, href, logo, width, height }) => (
-            <li key={name}>
-              <a href={href} target="_blank" rel="noreferrer">
-                <img src={logo} alt={name} width={width} height={height} loading="lazy" />
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="hw-sponsors__row">
+          <div className="hw-sponsors__group">
+            <p className="hw-label">Partnered with</p>
+            <OrgCard org={partner} lead />
+          </div>
+          <div className="hw-sponsors__group">
+            <p className="hw-label">Organised by</p>
+            <div className="hw-sponsors__pair">
+              {organisers.map(org => <OrgCard key={org.name} org={org} />)}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 

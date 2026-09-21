@@ -56,12 +56,6 @@ a {
   text-transform: uppercase;
 }
 
-.shared-site-nav__brand img {
-  display: block;
-  width: 45px;
-  height: auto;
-}
-
 .shared-site-nav nav {
   display: flex;
   align-items: center;
@@ -106,8 +100,7 @@ a {
     padding: 10px 16px;
   }
 
-  .shared-site-nav__brand span { display: none; }
-  .shared-site-nav__brand img { width: 38px; }
+  .shared-site-nav__brand { display: none; }
   .shared-site-nav nav { gap: 0; overflow-x: auto; }
   .shared-site-nav nav a { padding: 10px 7px; font-size: 16px; white-space: nowrap; }
 }
@@ -5006,7 +4999,6 @@ body:has(.hardware-page) { background: var(--hw-paper); }
 }
 
 .hardware-page .shared-site-nav__brand { gap: var(--hw-space-3); font-size: var(--hw-ui); font-weight: 600; letter-spacing: .02em; text-transform: none; }
-.hardware-page .shared-site-nav__brand img { width: 40px; }
 .hardware-page .shared-site-nav nav { gap: var(--hw-space-2); }
 
 .hardware-page .shared-site-nav nav a {
@@ -5654,32 +5646,33 @@ body:has(.hardware-page) { background: var(--hw-paper); }
   .hardware-page .hw-people--dense p { font-size: var(--hw-label); }
 }
 
-/* Sponsors — logos keep their own colours, on white so they read as supplied. */
-.hw-sponsors__grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--hw-grid-gap);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
+/* Sponsors — logos keep their own colours, on white so they read as supplied.
+   One row: the partner takes half, the two organisers share the other half. */
+.hw-sponsors__row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--hw-grid-gap); }
+.hw-sponsors__group { display: flex; flex-direction: column; gap: var(--hw-space-3); }
+.hw-sponsors__pair { display: grid; flex: 1; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--hw-grid-gap); }
 
-.hw-sponsors__grid a {
-  display: grid;
-  place-items: center;
-  height: 100%;
-  padding: var(--hw-space-7);
+.hw-sponsors__card {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--hw-space-3);
+  padding: var(--hw-space-6);
   border: 1px solid var(--hw-rule);
   border-radius: var(--hw-radius-card);
   background: #fff;
   transition: border-color var(--hw-duration-fast) var(--hw-ease);
 }
 
-.hw-sponsors__grid a:hover { border-color: var(--hw-cobalt); }
-.hw-sponsors__grid img { width: auto; max-width: 100%; height: 6rem; object-fit: contain; }
+.hw-sponsors__card:hover { border-color: var(--hw-cobalt); }
+.hw-sponsors__card img { width: auto; max-width: 100%; height: 3.5rem; object-fit: contain; }
+.hw-sponsors__card span { font-size: 1.25rem; font-weight: 800; color: #111; }
+.hw-sponsors__card--lead img { height: 4.5rem; }
 
 @media (max-width: 767px) {
-  .hw-sponsors__grid { grid-template-columns: 1fr; }
+  .hw-sponsors__row { grid-template-columns: 1fr; }
 }
 
 /* Unlisted /qr — a sheet of project QR codes, built to be printed and cut up. */
