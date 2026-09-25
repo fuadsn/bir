@@ -5614,6 +5614,18 @@ body:has(.hardware-page) { background: var(--hw-paper); }
 }
 
 .hw-people--dense { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.hw-people__link {
+  display: inline-block;
+  margin-top: var(--hw-space-2);
+  padding: 6px 10px;
+  border-radius: var(--hw-radius-control);
+  background: var(--hw-cobalt);
+  color: var(--hw-paper);
+  font-size: var(--hw-label);
+  font-weight: 500;
+  transition: background var(--hw-duration-fast) var(--hw-ease);
+}
+.hw-people__link:hover { background: var(--hw-cobalt-hover); }
 
 .hw-people img {
   display: block;

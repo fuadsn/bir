@@ -1,4 +1,4 @@
-export type Person = { name: string; photo: string };
+export type Person = { name: string; photo: string; link?: { href: string; label: string } };
 
 /**
  * Photos live in /public/people, exported as 720×900 portraits. Bump PHOTO_REV
@@ -14,6 +14,7 @@ export const mentors: Person[] = [
   { name: "Devadath S", photo: photo("devadath-s") },
   { name: "Kurian Jacob", photo: photo("kurian-jacob") },
   { name: "Akash", photo: photo("akash") },
+  { name: "Mohammed Shan", photo: photo("mohammed-shan"), link: { href: "https://shansnote.vercel.app/", label: "Check out Shan's notes" } },
 ];
 
 export const builders: Person[] = [

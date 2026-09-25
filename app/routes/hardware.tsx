@@ -95,6 +95,7 @@ function People({ people, dense = false }: { people: Person[]; dense?: boolean }
         <li key={person.name}>
           <img src={person.photo} alt={person.name} width="720" height="900" loading="lazy" />
           <p>{person.name}</p>
+          {person.link && <a className="hw-people__link" href={person.link.href} target="_blank" rel="noreferrer">{person.link.label} <span aria-hidden="true">↗</span></a>}
         </li>
       ))}
     </ul>
